@@ -14,7 +14,7 @@
     </header>
 
     <main class="main-content">
-      <section id="start-page" class="start-section hidden">
+      <section id="start-page" class="start-section display-flex">
         <h1>Coding Quiz Challenge</h1>
 
         <p>
@@ -26,25 +26,14 @@
         <button id="start-quiz" class="start-button">Start Quiz</button>
       </section>
 
-      <section id="question-page" class="question-section">
-        <h2>
-          Which of the following methods can be used to display data in some
-          form using Javascript?
-        </h2>
+      <section id="question-page" class="question-section hidden">
+        <h2 id="question">Questions</h2>
         <div class="answer-btn-parent">
           <div class="answer-btn-container">
-            <button id="answer-btn-1" class="answer-btn">
-              1. document.Write()
-            </button>
-            <button id="answer-btn-2" class="answer-btn">
-              2. console.log()
-            </button>
-            <button id="answer-btn-3" class="answer-btn">
-              3. window.alert()
-            </button>
-            <button id="answer-btn-4" class="answer-btn">
-              4. all of the above
-            </button>
+            <button id="answer-btn-1" class="answer-btn">1. Answer</button>
+            <button id="answer-btn-2" class="answer-btn">2. Answer</button>
+            <button id="answer-btn-3" class="answer-btn">3. Answer</button>
+            <button id="answer-btn-4" class="answer-btn">4. Answer</button>
           </div>
         </div>
         <div id="result-popup" class="result hidden">

@@ -46,9 +46,9 @@ header {
   color: var(--secondary-color);
 }
 
-/* MAIN */
-.main-content {
-  display: flex;
+/* START PAGE */
+
+.start-section {
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -81,7 +81,6 @@ header {
 
 /* QUESTION PAGE */
 .question-section {
-  display: flex;
   flex-direction: column;
   padding: 0 5% 0 20%;
 }
@@ -118,7 +117,6 @@ header {
   background: var(--secondary-color);
 }
 .result {
-  /* display: flex; */
   flex-direction: column;
 }
 
