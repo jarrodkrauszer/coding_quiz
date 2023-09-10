@@ -31,18 +31,25 @@
           Which of the following methods can be used to display data in some
           form using Javascript?
         </h2>
-
-        <div class="answer-btn-container">
-          <button id="answer-btn-1" class="answer-btn">
-            1. document.Write()
-          </button>
-          <button id="answer-btn-2" class="answer-btn">2. console.log()</button>
-          <button id="answer-btn-3" class="answer-btn">
-            3. window.alert()
-          </button>
-          <button id="answer-btn-4" class="answer-btn">
-            4. all of the above
-          </button>
+        <div class="answer-btn-parent">
+          <div class="answer-btn-container">
+            <button id="answer-btn-1" class="answer-btn">
+              1. document.Write()
+            </button>
+            <button id="answer-btn-2" class="answer-btn">
+              2. console.log()
+            </button>
+            <button id="answer-btn-3" class="answer-btn">
+              3. window.alert()
+            </button>
+            <button id="answer-btn-4" class="answer-btn">
+              4. all of the above
+            </button>
+          </div>
+        </div>
+        <div id="result-popup" class="result hidden">
+          <hr />
+          <span id="result-text">Correct/Wrong</span>
         </div>
       </section>
     </main>

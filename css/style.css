@@ -24,6 +24,9 @@ img {
 }
 
 /* GLOBAL CLASSES */
+.display-flex {
+  display: flex;
+}
 
 .hidden {
   display: none;
@@ -89,20 +92,23 @@ header {
   text-align: left;
 }
 
-/* .answer-btn-container {
-  display: grid;
-  grid-template-columns: 1fr;
-} */
+.answer-btn-parent {
+  display: flex;
+  padding-bottom: 1rem;
+}
+
+.answer-btn-container {
+ display: flex;
+ flex-direction: column;
+}
 
 .answer-btn {
   color: #fff;
-  display: block;
   background: var(--primary-color);
   text-align: left;
   border: none;
   padding: .5rem 1rem .5rem .5rem;
   margin: .25rem 0;
-  /* width: fit-content; */
   font-size: 1rem;
   border-radius: 5px;
   transition: all .5s;
@@ -110,5 +116,16 @@ header {
 
 .answer-btn:hover {
   background: var(--secondary-color);
+}
+.result {
+  /* display: flex; */
+  flex-direction: column;
+}
+
+.result span {
+  padding-top: .5rem;
+  text-align: left;
+  font-size: 2rem;
+  color: gray
 }
 
