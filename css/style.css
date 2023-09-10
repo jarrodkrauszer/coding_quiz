@@ -1,0 +1,33 @@
+/* RESETS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* GLOBAL CLASSES */
+
+.hidden {
+  display: none;
+}
+
+/* HEADER */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3%;
+}
+
+#view-scores {
+  border: none;
+  background: none;
+}
