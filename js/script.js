@@ -24,30 +24,71 @@ const questions = [
     answers: ['document.Write()', 'console.log()', 'window.alert()', 'all the above'],
     correctAnswerID: 3 
   }
-]
+];
 
 // Assignment Code
 var startBtn = document.querySelector("#start-quiz");
 var startPage = document.querySelector("#start-page");
 var questionPage = document.querySelector("#question-page");
-var answerBtn1 = document.querySelector("#answer-btn-1");
-var answerBtn2 = document.querySelector("#answer-btn-2");
-var answerBtn3 = document.querySelector("#answer-btn-3");
-var answerBtn4 = document.querySelector("#answer-btn-4");
+// var answerBtn1 = document.querySelector("#answer-btn-1");
+// var answerBtn2 = document.querySelector("#answer-btn-2");
+// var answerBtn3 = document.querySelector("#answer-btn-3");
+// var answerBtn4 = document.querySelector("#answer-btn-4");
+
+// Variables
 var numOfAnswers = 0;
+var gameOver = true;
+var score = 0;
 
-function generateQuestion() {
-  console.log('Questions Length: ' + questions.length);
+function checkAnswer(buttonIndex) {
 
-  var newQuestion = document.querySelector("#question");
-  newQuestion.innerHTML = questions[numOfAnswers].question;
-
-  for(var index = 0; index < questions[numOfAnswers].answers.length; index++) {
-    console.log(`#answer-btn-${index}`);
-    var answerBtn = document.querySelector(`#answer-btn-${index+1}`)
-    answerBtn.innerHTML = `${index +1}. ${questions[numOfAnswers].answers[index]}`
+  if(questions[numOfAnswers].correctAnswerID === buttonIndex) {
+    console.log('Correct!');
+    score += 5;
+  } else {
+    console.log('Wrong!'); 
+    score -= 2;
   }
 
+  numOfAnswers++;
+  generateQuestion();
+}
+
+function generateQuestion() {
+  var answerBtnContainer = document.querySelector("#answer-container");
+  answerBtnContainer.innerHTML = '';
+
+  if (numOfAnswers < questions.length) {
+    var newQuestion = document.querySelector("#question");
+    var questionIndex = 1;
+    newQuestion.innerText = questions[numOfAnswers].question;
+
+    questions[numOfAnswers].answers.forEach((answer) => {
+
+      // let answerBtn = document.createElement('button', {
+      //   id: `#answer-btn-${questionIndex}`,
+      //   class: 'answer-btn'
+      // })
+
+      let answerBtn = document.createElement('button');
+      answerBtn.setAttribute('id', `#answer-btn-${questionIndex}`);
+      answerBtn.setAttribute('class', 'answer-btn');
+
+      answerBtn.innerText = `${questionIndex}. ${answer}`;
+      answerBtnContainer.appendChild(answerBtn);
+      answerBtn.addEventListener("click", answerClicked);
+
+    });
+
+    // questions[numOfAnswers].answers.forEach((answer) => {
+    //   var answerBtn = document.querySelector(`#answer-btn-${questionIndex}`)
+    //   answerBtn.innerText = `${questionIndex}. ${answer}`
+    //   questionIndex++;
+    // });
+    
+  } else {
+    console.log('Game Over!');
+  }
 }
 
 function displayQuestionPage() {
@@ -61,18 +102,20 @@ function displayStartPage() {
 }
 
 function startQuiz() {
+  gameOver = false;
   generateQuestion();
   displayQuestionPage();
 
 }
 
 const answerClicked = (event) => {
-  console.log('Button Clicked: ' + event.target.id);
+  var buttonPressed = parseInt(event.target.id.slice(-1)) ;
+  checkAnswer(buttonPressed - 1);
 }
 
 // Add event listener to generate button
 startBtn.addEventListener("click", startQuiz);
-answerBtn1.addEventListener("click", answerClicked);
-answerBtn2.addEventListener("click", answerClicked);
-answerBtn3.addEventListener("click", answerClicked);
-answerBtn4.addEventListener("click", answerClicked);
+// answerBtn1.addEventListener("click", answerClicked);
+// answerBtn2.addEventListener("click", answerClicked);
+// answerBtn3.addEventListener("click", answerClicked);
+// answerBtn4.addEventListener("click", answerClicked);

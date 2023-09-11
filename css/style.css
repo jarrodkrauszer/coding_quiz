@@ -116,6 +116,7 @@ header {
 .answer-btn:hover {
   background: var(--secondary-color);
 }
+
 .result {
   flex-direction: column;
 }
