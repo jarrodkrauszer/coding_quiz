@@ -23,7 +23,8 @@ img {
   max-width: 100%;
 }
 
-/* GLOBAL CLASSES */
+/* ------- ASK IF YOU ARE DOING THIS RIGHT ------- */
+/* GLOBAL CLASSES  */
 .display-flex {
   display: flex;
 }
@@ -117,6 +118,7 @@ header {
   background: var(--secondary-color);
 }
 
+/* RESULTS POPUP */
 .result {
   flex-direction: column;
 }
@@ -126,5 +128,51 @@ header {
   text-align: left;
   font-size: 2rem;
   color: gray
+}
+
+/* GAME OVER PAGE */
+.game-over-section {
+  flex-direction: column;
+  padding: 0 5% 0 20%;
+}
+
+.game-over-section h3 {
+  font-size: 2.5rem;
+  padding: 3rem 0 .5rem 0;
+  text-align: left;
+}
+
+.game-over-section p {
+  font-size: 1.25rem;
+  text-align: left;
+}
+
+.enter-initials {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin-top: .75rem;
+}
+
+.enter-initials p {
+  font-size: 1.25rem;
+}
+
+.enter-initials input {
+  height: 2rem;
+  width: 15rem;
+  margin: 0 .5rem;
+  padding-left: .2rem;
+}
+
+.enter-initials button {
+  color: #fff;
+  background: var(--primary-color);
+  height: 2rem;
+  width: 5rem;
+  padding: .2rem .5rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
 }
 

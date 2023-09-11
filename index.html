@@ -26,7 +26,8 @@
         <button id="start-quiz" class="start-button">Start Quiz</button>
       </section>
 
-      <section id="question-page" class="question-section hidden">
+      <!-- ASK ABOUT THE CLASSES -->
+      <section id="question-page" class="question-section display-flex hidden">
         <h2 id="question">Questions</h2>
         <div class="answer-btn-parent">
           <div id="answer-buttons" class="answer-btn-container"></div>
@@ -34,6 +35,15 @@
         <div id="result-popup" class="result hidden">
           <hr />
           <span id="result-text">Correct/Wrong</span>
+        </div>
+      </section>
+      <section id="game-over" class="game-over-section display-flex hidden">
+        <h3>All Done!</h3>
+        <p id="final-score-text"></p>
+        <div class="enter-initials">
+          <p>Enter initials:</p>
+          <input type="text" id="initials" />
+          <button id="submit-score">Submit</button>
         </div>
       </section>
     </main>
