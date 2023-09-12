@@ -116,12 +116,7 @@ function submitScore() {
 function addPlayerToStorage(player) {
   const playersFromStorage = getPlayersFromStorage();
   
-  if (checkIfPlayerExists) {
-
-  } else {
-    
-  }
-  // Add new item to array
+  // Add new player to array
   playersFromStorage.push(player);
 
   // Convert to JSON string and set to local storage
@@ -136,14 +131,14 @@ function getPlayersFromStorage() {
   } else {
     playersFromStorage = JSON.parse(localStorage.getItem('player'));
   }
-  console.log(playersFromStorage);
+
   return playersFromStorage;
 }
 
-function checkIfPlayerExists(player) {
-  const playersFromStorage = getItemsFromStorage();
-  return playersFromStorage.includes(player);
-}
+// function checkIfPlayerExists(player) {
+//   const playersFromStorage = getPlayersFromStorage();
+//   return playersFromStorage.includes(player);
+// }
 
 function setTime() {
   // Sets interval in variable
