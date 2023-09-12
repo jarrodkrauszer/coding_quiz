@@ -8,7 +8,7 @@
   </head>
   <body>
     <header class="main-header">
-      <button id="view-scores">View high scores</button>
+      <a id="view-scores" href="highscores.html">View high scores</a>
 
       <p class="time-clock">Time: <span id="timer"></span></p>
     </header>
@@ -41,12 +41,14 @@
         <h3>All Done!</h3>
         <p id="final-score-text"></p>
         <div class="enter-initials">
-          <p>Enter initials:</p>
-          <input type="text" id="initials" />
-          <button id="submit-score">Submit</button>
+          <p>
+            Enter initials: <input type="text" id="initials" max="3" />
+            <button id="submit-score">Submit</button>
+          </p>
         </div>
       </section>
     </main>
+    <script src="./js/questions.js"></script>
     <script src="./js/script.js"></script>
   </body>
 </html>

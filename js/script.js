@@ -1,36 +1,3 @@
-const questions = [
-  {
-    question: 'Javascript is an _______ language?',
-    answers: ['object-oriented', 'object-based', 'procedural', 'none of the above'],
-    correctAnswer: 'object-oriented' 
-  },
-  {
-    question: 'Commonly used data types do not include:',
-    answers: ['strings', 'booleans', 'alerts', 'numbers'],
-    correctAnswer: 'alerts' 
-  },
-  {
-    question: 'Which of the following keywords is used to define a variable in Javascript?',
-    answers: ['var', 'let', 'both a and b', 'none of the above'],
-    correctAnswer: 'both a and b' 
-  },
-  {
-    question: 'Which of the following methods is used to access HTML elements using Javascript?',
-    answers: ['getElementByID()', 'getElementsByClassName()', 'both a and b', 'none of the above'],
-    correctAnswer: 'both a and b'
-  },
-  {
-    question: 'You can use a text string as a literal value or assign it to a variable.',
-    answers: ['true', 'false'],
-    correctAnswer: 'true'
-  },
-  {
-    question: 'Which of the following methods can be used to display data in some form using Javascript?',
-    answers: ['document.Write()', 'console.log()', 'window.alert()', 'all the above'],
-    correctAnswer: 'all the above' 
-  }
-];
-
 // Assignment Code
 var startBtn = document.querySelector("#start-quiz");
 var submitScoreBtn = document.querySelector('#submit-score');
@@ -39,31 +6,27 @@ var questionPage = document.querySelector("#question-page");
 var resultPage = document.querySelector('#result-popup')
 var gameOverPage = document.querySelector('#game-over');
 
-
 // Global Variables
 var numOfAnswers = 0;
 var score = 0;
-var lastPageDisplayed = 'start-page';
+var gameTimer = 0;
 
 function displayStartPage() {
   startPage.classList.remove('hidden');
   questionPage.classList.add('hidden');
   gameOverPage.classList.add('hidden');
-  lastPageDisplayed = 'start-page';
 }
 
 function displayQuestionPage() {
   questionPage.classList.remove('hidden');
   startPage.classList.add('hidden');
   gameOverPage.classList.add('hidden');
-  lastPageDisplayed = 'question-page';
 }
 
 function displayGameOverPage() {
   gameOverPage.classList.remove('hidden');
   startPage.classList.add('hidden');
   questionPage.classList.add('hidden');
-  lastPageDisplayed = 'game-over';
 }
 
 function hideResultPopup() {
@@ -83,8 +46,7 @@ function generateQuestion() {
     var answerBtn = document.createElement('button');
     answerBtn.id = `#answer-btn-${questionIndex}`;
     answerBtn.classList.add('answer-btn');
-    // answerBtn.setAttribute('id', `#answer-btn-${questionIndex}`);
-    // answerBtn.setAttribute('class', 'answer-btn');
+    
     var text = document.createTextNode(`${questionIndex}. ${answer}`);
     answerBtn.appendChild(text);
     answerBtnContainer.appendChild(answerBtn);
@@ -105,16 +67,15 @@ function gameOver () {
   numOfAnswers = 0;
 }
 
-function checkAnswer(answerIndex) {
+function checkAnswer(answer) {
   var resultText = document.querySelector('#result-text');
   var result = '';
   
-  if(questions[numOfAnswers].answers[answerIndex] === questions[numOfAnswers].correctAnswer) {
+  if(answer === questions[numOfAnswers].correctAnswer) {
     result = 'Correct!';
     score++;
   } else {
     result = 'Wrong!'; 
-    score--;
   }
 
   resultText.innerText = result;
@@ -122,10 +83,12 @@ function checkAnswer(answerIndex) {
   setTimeout(hideResultPopup, 1500);
 
   numOfAnswers++;
-  if (numOfAnswers < questions.length) {
-    generateQuestion();
-  } else {
+
+  if (gameTimer === 0 || numOfAnswers === questions.length) {
     setTimeout(gameOver, 1000);
+
+  } else {
+    generateQuestion();
   }
 }
 
@@ -137,14 +100,15 @@ function submitScore() {
 
 function startQuiz() {
   numOfAnswers = 0;
+  gameTimer = 120;
   generateQuestion();
   displayQuestionPage();
 }
 
 // Button Click Event for the answer buttons  
 const answerClicked = (event) => {
-  var buttonPressed = parseInt(event.target.id.slice(-1)) ;
-  checkAnswer(buttonPressed - 1);
+  var answer = event.target.innerText.slice(3);
+  checkAnswer(answer)
 }
 
 // Add event listener to generate button
