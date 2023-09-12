@@ -197,7 +197,7 @@ header {
   background: var(--primary-color);
   border: none;
   border-radius: 5px;
-  padding: .2rem .5rem;
+  padding: .3rem .6rem;
   transition: background .5s;
 }
 
