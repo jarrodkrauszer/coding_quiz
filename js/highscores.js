@@ -3,6 +3,7 @@ var clearScoresBtn = document.querySelector('#clear-scores');
 function clearScores() {
   console.log('Clear Scores!');
   localStorage.clear();
+  location.reload();
   createHighScoreList();
 }
 

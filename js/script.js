@@ -53,6 +53,7 @@ function generateQuestion() {
     answerBtn.appendChild(text);
     answerBtnContainer.appendChild(answerBtn);
 
+    // Add the button's event listener
     answerBtn.addEventListener("click", answerClicked);
     questionIndex++;
 
@@ -108,8 +109,12 @@ function submitScore() {
     name: initials.value,
     highScore: score
   };
+  
+  if(initials.value.length !== 0) {
+    addPlayerToStorage(player);
+    initials.value = '';
+  }
 
-  addPlayerToStorage(player);
   displayStartPage();
 }
 
@@ -147,9 +152,7 @@ function setTime() {
     timeLeft.textContent = gameTimer;
 
     if(gameTimer === 0) {
-      // Stops execution of action at set interval
       clearInterval(timerInterval);
-      // Calls function to create and append image
       gameOver();
     }
 
@@ -159,17 +162,19 @@ function setTime() {
 function startQuiz() {
   numOfAnswers = 0;
   gameTimer = 60;
+  score = 0;
   setTime();
   generateQuestion();
   displayQuestionPage();
 }
 
 // Button Click Event for the answer buttons  
-const answerClicked = (event) => {
-  var answer = event.target.innerText.slice(3);
+const answerClicked = (e) => {
+  var answer = e.target.innerText.slice(3);
   checkAnswer(answer)
 }
 
-// Add event listener to generate button
+// Add event listener to generate button events
 startBtn.addEventListener("click", startQuiz);
 submitScoreBtn.addEventListener("click", submitScore);
+// answerBtnContainer.addEventListener("click", answerClicked);

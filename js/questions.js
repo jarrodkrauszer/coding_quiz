@@ -28,5 +28,25 @@ const questions = [
     question: 'Which of the following methods can be used to display data in some form using Javascript?',
     answers: ['document.Write()', 'console.log()', 'window.alert()', 'all the above'],
     correctAnswer: 'all the above' 
+  },
+  {
+    question: 'JavaScript is a programming language used for creating dynamic and interactive web pages.',
+    answers: ['true', 'false',],
+    correctAnswer: 'true' 
+  },
+  {
+    question: 'In JavaScript, the typeof operator is used to determine the data type of a variable.',
+    answers: ['true', 'false',],
+    correctAnswer: 'true' 
+  },
+  {
+    question: 'JavaScript is a not case-sensitive language, meaning that variable and Variable are considered different variables.',
+    answers: ['true', 'false',],
+    correctAnswer: 'false' 
+  },
+  {
+    question: 'JavaScript supports both synchronous and asynchronous programming.',
+    answers: ['true', 'false',],
+    correctAnswer: 'true' 
   }
 ];
