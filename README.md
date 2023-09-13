@@ -2,7 +2,7 @@
 
 ## Description
 
-In this assignment we were task to create a small coding quiz based on certain criteria.  The user is lands on the start quiz page that has a button to let them start a timed quiz.  They get 60 seconds to answer as many correct answers as they can.  The user will get 10 seconds deducted for every wrong answer.  Once the quiz is over they are brought to a screnn where they can save there initials and score. There is also a high score page the lists are the high scores in order from highest to lowest.  
+In this assignment we were task to create a small coding quiz based on certain criteria.  The user is lands on the start quiz page that has a button to let them start a timed quiz.  They get 60 seconds to answer as many correct answers as they can.  The user will get 10 seconds deducted for every wrong answer.  Once the quiz is over they are brought to a screen where they can save there initials and score. There is also a high score page the lists are the high scores in order from highest to lowest.  
 
 ## Repository
 
