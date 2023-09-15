@@ -8,7 +8,7 @@ var gameOverPage = document.querySelector('#game-over');
 var timeLeft = document.querySelector('#timer');
 
 // Global Variables
-var numOfAnswers = 0;
+var questionsAnswered = 0;
 var score = 0;
 var gameTimer = 0;
 var timerInterval;
@@ -41,10 +41,10 @@ function generateQuestion() {
 
   var newQuestion = document.querySelector("#question");
   var questionIndex = 1;
-  newQuestion.innerText = questions[numOfAnswers].question;
+  newQuestion.innerText = questions[questionsAnswered].question;
 
   // Generates the answer buttons
-  questions[numOfAnswers].answers.forEach((answer) => {
+  questions[questionsAnswered].answers.forEach((answer) => {
     var answerBtn = document.createElement('button');
     answerBtn.id = `#answer-btn-${questionIndex}`;
     answerBtn.classList.add('answer-btn');
@@ -67,14 +67,14 @@ function gameOver () {
   var finalScore = document.querySelector('#final-score-text');
   finalScore.innerText = `You final score is ${score}.`;
 
-  numOfAnswers = 0;
+  questionsAnswered = 0;
 }
 
 function checkAnswer(answer) {
   var resultText = document.querySelector('#result-text');
   var result = '';
   
-  if(answer === questions[numOfAnswers].correctAnswer) {
+  if(answer === questions[questionsAnswered].correctAnswer) {
     result = 'Correct!';
     score++;
   } else {
@@ -90,9 +90,9 @@ function checkAnswer(answer) {
   resultPage.classList.remove('hidden');
   setTimeout(hideResultPopup, 1500);
 
-  numOfAnswers++;
+  questionsAnswered++;
 
-  if (gameTimer === 0 || numOfAnswers === questions.length) {
+  if (gameTimer === 0 || questionsAnswered === questions.length) {
     setTimeout(gameOver, 1000);
     gameTimer = 0;
     timeLeft.textContent = gameTimer;
@@ -129,25 +129,12 @@ function addPlayerToStorage(player) {
 }
 
 function getPlayersFromStorage() {
-  let playersFromStorage;
-
-  if (localStorage.getItem('player') === null) {
-    playersFromStorage = [];
-  } else {
-    playersFromStorage = JSON.parse(localStorage.getItem('player'));
-  }
-
-  return playersFromStorage;
+  return JSON.parse(localStorage.getItem('player')) || [];
 }
 
-// function checkIfPlayerExists(player) {
-//   const playersFromStorage = getPlayersFromStorage();
-//   return playersFromStorage.includes(player);
-// }
-
-function setTime() {
-  // Sets interval in variable
-  timerInterval = setInterval(function() {
+function startTimer() {
+   // Sets interval in variable
+   timerInterval = setInterval(function() {
     gameTimer--;
     timeLeft.textContent = gameTimer;
 
@@ -161,10 +148,10 @@ function setTime() {
 
 function startQuiz(e) {
   
-  numOfAnswers = 0;
+  questionsAnswered = 0;
   gameTimer = 60;
   score = 0;
-  setTime();
+  startTimer();
   generateQuestion();
   displayQuestionPage();
 }
@@ -172,10 +159,9 @@ function startQuiz(e) {
 // Button Click Event for the answer buttons  
 const answerClicked = (e) => {
   var answer = e.target.innerText.slice(3);
-  checkAnswer(answer)
+  checkAnswer(answer);
 }
 
 // Add event listener to generate button events
 startBtn.addEventListener("click", startQuiz);
 submitScoreBtn.addEventListener("click", submitScore);
-// answerBtnContainer.addEventListener("click", answerClicked);

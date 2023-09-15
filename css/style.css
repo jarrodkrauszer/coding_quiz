@@ -216,3 +216,16 @@ header {
 .high-score-buttons button:hover {
   background: var(--secondary-color);
 }
+
+/* MEDIA QUERIES */
+@media (max-width: 650px) {
+
+  .start-section h1 {
+    font-size: 2.5rem;
+  }
+
+  .score-list {
+    width: 200px;
+    font-size: .75rem;
+  }
+}
