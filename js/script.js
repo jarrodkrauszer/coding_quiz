@@ -159,7 +159,8 @@ function setTime() {
   }, 1000);
 }
 
-function startQuiz() {
+function startQuiz(e) {
+  
   numOfAnswers = 0;
   gameTimer = 60;
   score = 0;
